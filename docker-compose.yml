@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:17.4-alpine
+    container_name: pj-flare-postgres_db
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: pj-flare
+      POSTGRES_PASSWORD: pj-flare-password
+      POSTGRES_DB: pj-flare-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/data/postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

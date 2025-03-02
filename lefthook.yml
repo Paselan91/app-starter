@@ -1,0 +1,12 @@
+pre-commit:
+  parallel: true
+  commands:
+    check:
+      glob: "*.{js,jsx,ts,tsx,json}"
+      run: yarn ts-check:write {staged_files}
+
+pre-push:
+  commands:
+    packages-audit:
+      tags: frontend security
+      run: yarn audit

@@ -1,0 +1,57 @@
+{
+	"$schema": "https://json.schemastore.org/biome-config",
+	"extends": [],
+	"rules": {
+		"files": [
+			{
+				"match": ["src/**/*.ts"],
+				"rules": {
+					"extends": ["config:node", "config:typescript"],
+					"rules": {
+						"no-console": "warn",
+						"no-process-env": "warn"
+					}
+				}
+			},
+			{
+				"match": ["components/**/*.tsx", "app/**/*.tsx", "pages/**/*.tsx"],
+				"rules": {
+					"extends": ["config:react", "config:typescript", "config:next"],
+					"rules": {
+						"react/react-in-jsx-scope": "off",
+						"jsx-a11y/anchor-is-valid": "warn"
+					}
+				}
+			},
+			{
+				"match": [
+					"storybook/**/*.ts",
+					"storybook/**/*.tsx",
+					".storybook/**/*.ts"
+				],
+				"rules": {
+					"extends": ["plugin:storybook/recommended"],
+					"rules": {
+						"storybook/default-exports": "warn",
+						"storybook/no-unassigned-meta": "warn"
+					}
+				}
+			},
+			{
+				"match": [
+					"styles/**/*.css",
+					"styles/**/*.scss",
+					"*.config.js",
+					"*.config.ts"
+				],
+				"rules": {
+					"extends": [],
+					"rules": {
+						"no-unused-vars": "error",
+						"no-console": "off"
+					}
+				}
+			}
+		]
+	}
+}
